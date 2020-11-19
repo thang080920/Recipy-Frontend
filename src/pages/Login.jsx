@@ -1,25 +1,14 @@
-import React, { useState } from 'react'
-import TextField from '../components/TextField'
+import React from 'react'
+import Button from '../components/Button'
 
-let useInput = initialValue => {
-	const [val, setVal] = useState(initialValue)
-
-	function handleChange(e) {
-		console.log(e.target.value)
-		setVal(e.target.value)
-	}
-	return {
-		value: val,
-		onChange: handleChange,
-	}
+let handleClick = e => {
+	console.log('clicked')
 }
 
 const Login = () => {
-	const input = useInput('')
 	return (
 		<div>
-			{input.value}
-			<TextField {...input} />
+			<Button primary onClick={handleClick} />
 		</div>
 	)
 }
