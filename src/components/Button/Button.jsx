@@ -8,6 +8,7 @@ import { PRIMARYCOLOR } from '../../config'
 
 const StyledButton = styled.button`
 	height: 32px;
+	width: ${props => (props.fullSize ? '100%' : 'auto')};
 	background-color: ${props => (props.primary ? PRIMARYCOLOR : '#fff')};
 
 	&:hover {
@@ -22,14 +23,18 @@ const StyledButton = styled.button`
 `
 
 const Button = props => {
-	const { text, primary, onClick } = props
+	const { fullSize, text, primary, onClick } = props
 
 	let className = style.DefaultButton
 	if (primary) className += ` ${style.PrimaryButton}`
 
 	return (
 		<>
-			<StyledButton onClick={onClick} className={className} primary={primary}>
+			<StyledButton
+				onClick={onClick}
+				fullSize={fullSize}
+				className={className}
+				primary={primary}>
 				{text}
 			</StyledButton>
 		</>
@@ -39,6 +44,7 @@ const Button = props => {
 Button.defaultProps = {
 	text: 'Button',
 	primary: false,
+	fullSize: false,
 }
 
 export default Button
