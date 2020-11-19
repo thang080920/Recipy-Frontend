@@ -1,0 +1,16 @@
+.PrefixWrapper {
+	height: 100%;
+	display: flex;
+	align-items: center;
+	overflow: hidden;
+	white-space: nowrap;
+	box-sizing: content-box;
+	padding: 0 8px;
+	color: #323130;
+	font-weight: 600;
+	font-size: 14px;
+}
+
+.PrefixDisabled {
+	color: #a19f9d;
+}

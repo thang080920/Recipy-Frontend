@@ -1,0 +1,3 @@
+const PRIMARYCOLOR = process.env.REACT_APP_PRIMARY_COLOR
+
+export { PRIMARYCOLOR }
