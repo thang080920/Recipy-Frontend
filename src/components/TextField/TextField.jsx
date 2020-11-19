@@ -20,8 +20,9 @@ const TextField = props => {
 		required,
 		errorMessage,
 		readonly,
+		value,
+		onChange,
 		disabled,
-		defaultValue,
 		underline,
 		prefix,
 		placeholder,
@@ -44,7 +45,8 @@ const TextField = props => {
 				size={size}
 				placeholder={placeholder}
 				underline={underline}
-				defaultValue={defaultValue}
+				value={value}
+				onChange={onChange}
 				readonly={readonly}
 				disabled={disabled}
 				prefix={prefix}
@@ -64,7 +66,6 @@ TextField.defaultProps = {
 	errorMessage: undefined,
 	readonly: false,
 	disabled: false,
-	defaultValue: '',
 	underline: false,
 	prefix: undefined,
 	placeholder: undefined,
