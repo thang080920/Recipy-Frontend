@@ -59,7 +59,8 @@ const Input = props => {
 		id,
 		underline,
 		size,
-		defaultValue,
+		value,
+		onChange,
 		disabled,
 		readonly,
 		prefix,
@@ -94,7 +95,8 @@ const Input = props => {
 					className={style.Input}
 					type="text"
 					placeholder={placeholder}
-					defaultValue={defaultValue}
+					value={value}
+					onChange={onChange}
 					disabled={disabled}
 					readOnly={readonly}
 				/>
