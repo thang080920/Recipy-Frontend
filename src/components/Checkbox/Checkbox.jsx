@@ -7,31 +7,39 @@ import useUniqueId from '../../hooks/useUniqueId'
 import { PRIMARYCOLOR } from '../../config'
 
 const CheckboxInner = styled.div`
+	transition: all ease-in-out 0.2s;
 	width: 16px;
 	height: 16px;
-	background-color: ${props => (props.checked ? PRIMARYCOLOR : '#fff')};
-	border: 1px solid ${props => (props.checked ? PRIMARYCOLOR : '#605e5c')};
+	position: relative;
+
+	background-color: ${props =>
+		props.checked
+			? props.disabled
+				? '#c8c6c4'
+				: PRIMARYCOLOR
+			: props.disabled
+			? '#fff'
+			: '#fff'};
+
+	border: 1px solid
+		${props =>
+			props.checked
+				? props.disabled
+					? '#c8c6c4'
+					: PRIMARYCOLOR
+				: props.disabled
+				? '#c8c6c4'
+				: '#605e5c'};
+
 	border-radius: 2px;
 
-	cursor: pointer;
+	cursor: ${props => (props.disabled ? 'default' : 'pointer')};
+`
 
-	position: relative;
-	transition: all ease-in-out 0.2s;
-
-	&::after {
-		transition: transform cubic-bezier(0.12, 0.4, 0.29, 1.46) 0.2s;
-		position: absolute;
-		content: '';
-		top: 50%;
-		width: 3px;
-		height: 7px;
-		left: 20%;
-		border: 2px solid white;
-		border-top: none;
-		border-left: none;
-
-		transform: rotate(45deg) scale(0) translate(-55%, -55%);
-	}
+const CheckboxLabel = styled.label`
+	box-sizing: border-box;
+	display: flex;
+	align-items: center;
 `
 
 const Checkbox = props => {
@@ -39,7 +47,7 @@ const Checkbox = props => {
 		display: 'none',
 	}
 
-	const { checked, onChange } = props
+	const { checked, onChange, disabled, text } = props
 
 	const [isChecked, setIsChecked] = useState(checked ?? false)
 
@@ -56,22 +64,36 @@ const Checkbox = props => {
 
 	const id = useUniqueId()
 	return (
-		<>
-			<label htmlFor={id}>
+		<div className="CheckboxWrapper">
+			<CheckboxLabel htmlFor={id}>
 				<CheckboxInner
-					className={isChecked ? style.CheckboxChecked : ''}
+					className={`${style.CheckboxDefault} ${
+						isChecked ? style.CheckboxChecked : ''
+					} ${disabled ? style.CheckboxDisabled : ''}`}
 					checked={isChecked ?? false}
+					disabled={disabled}
 				/>
-			</label>
+				<span
+					className={`${style.LabelText} ${
+						disabled ? style.LabelTextDisabled : ''
+					}`}>
+					{text}
+				</span>
+			</CheckboxLabel>
 			<input
 				id={id}
+				disabled={disabled}
 				checked={checked}
 				onChange={handleChange}
 				type="checkbox"
 				style={checkboxStyle}
 			/>
-		</>
+		</div>
 	)
+}
+
+Checkbox.defaultProps = {
+	disabled: false,
 }
 
 export default Checkbox
