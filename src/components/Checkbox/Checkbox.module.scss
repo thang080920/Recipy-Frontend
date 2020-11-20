@@ -1,6 +1,37 @@
-.CheckboxChecked {
+.CheckboxDefault {
+	width: 100%;
+	height: 100%;
+	box-sizing: border-box;
+
 	&::after {
 		transition: transform cubic-bezier(0.12, 0.4, 0.29, 1.46) 0.2s;
-		transform: rotate(45deg) scale(1) translate(-55%, -55%) !important;
+		position: absolute;
+		content: '';
+		top: 50%;
+		width: 3px;
+		height: 7px;
+		left: 25%;
+		border: 2px solid white;
+		border-top: none;
+		border-left: none;
+
+		transform: rotate(45deg) translate(-55%, -55%) scale(0);
+	}
+}
+
+.CheckboxChecked {
+	&::after {
+		transform: rotate(45deg) translate(-55%, -55%) scale(1);
+	}
+}
+
+.CheckboxDisabled {
+	user-select: none;
+
+	border-color: red;
+
+	&::after {
+		cursor: default;
+		user-select: none;
 	}
 }
