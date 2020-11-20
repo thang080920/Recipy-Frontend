@@ -1,14 +1,19 @@
-import React from 'react'
+import React, { useState } from 'react'
+import Checkbox from '../components/Checkbox'
 import Button from '../components/Button'
 
-let handleClick = e => {
-	console.log('clicked')
-}
-
 const Login = () => {
+	const [check, setCheck] = useState(false)
+
+	function handleClick(e) {
+		console.log(!check)
+		setCheck(!check)
+	}
+
 	return (
 		<div>
-			<Button disabled primary onClick={handleClick} />
+			<Checkbox checked={check} onChange={handleClick} />
+			<Button onClick={handleClick} />
 		</div>
 	)
 }
