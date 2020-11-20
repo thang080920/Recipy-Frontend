@@ -23,7 +23,7 @@ const StyledButton = styled.button`
 `
 
 const Button = props => {
-	const { fullSize, text, primary, onClick } = props
+	const { fullSize, text, primary, disabled, onClick } = props
 
 	let className = style.DefaultButton
 	if (primary) className += ` ${style.PrimaryButton}`
@@ -33,6 +33,7 @@ const Button = props => {
 			<StyledButton
 				onClick={onClick}
 				fullSize={fullSize}
+				disabled={disabled}
 				className={className}
 				primary={primary}>
 				{text}
@@ -45,6 +46,7 @@ Button.defaultProps = {
 	text: 'Button',
 	primary: false,
 	fullSize: false,
+	disabled: false,
 }
 
 export default Button

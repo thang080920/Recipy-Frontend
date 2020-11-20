@@ -7,6 +7,19 @@
 	font-weight: 500;
 	padding: 0 16px;
 	border-radius: 2px;
+
+	&:disabled {
+		border-color: #f3f2f1;
+		background-color: #f3f2f1;
+		color: #a19f9d;
+		cursor: default;
+	}
+
+	&:hover:disabled {
+		border-color: #f3f2f1;
+		background-color: #f3f2f1;
+		color: #a19f9d;
+	}
 }
 
 .PrimaryButton {
