@@ -8,6 +8,9 @@ import { PRIMARYCOLOR } from '../../config'
 
 const CheckboxInner = styled.div`
 	transition: all ease-in-out 0.2s;
+	width: 16px;
+	height: 16px;
+	position: relative;
 
 	background-color: ${props =>
 		props.checked
@@ -34,11 +37,9 @@ const CheckboxInner = styled.div`
 `
 
 const CheckboxLabel = styled.label`
-	position: relative;
-	width: 16px;
-	height: 16px;
 	box-sizing: border-box;
-	display: inline-block;
+	display: flex;
+	align-items: center;
 `
 
 const Checkbox = props => {
@@ -46,7 +47,7 @@ const Checkbox = props => {
 		display: 'none',
 	}
 
-	const { checked, onChange, disabled } = props
+	const { checked, onChange, disabled, text } = props
 
 	const [isChecked, setIsChecked] = useState(checked ?? false)
 
@@ -72,6 +73,12 @@ const Checkbox = props => {
 					checked={isChecked ?? false}
 					disabled={disabled}
 				/>
+				<span
+					className={`${style.LabelText} ${
+						disabled ? style.LabelTextDisabled : ''
+					}`}>
+					{text}
+				</span>
 			</CheckboxLabel>
 			<input
 				id={id}

@@ -10,7 +10,7 @@
 		top: 50%;
 		width: 3px;
 		height: 7px;
-		left: 25%;
+		left: 22%;
 		border: 2px solid white;
 		border-top: none;
 		border-left: none;
@@ -28,10 +28,17 @@
 .CheckboxDisabled {
 	user-select: none;
 
-	border-color: red;
-
 	&::after {
 		cursor: default;
 		user-select: none;
 	}
+}
+
+.LabelText {
+	margin-left: 5px;
+	color: #323130;
+}
+
+.LabelTextDisabled {
+	color: #a19f9d;
 }

@@ -12,7 +12,7 @@ const Login = () => {
 
 	return (
 		<div>
-			<Checkbox disabled checked onChange={handleClick} />
+			<Checkbox text="testing" onChange={handleClick} />
 			<Button onClick={handleClick} />
 		</div>
 	)
