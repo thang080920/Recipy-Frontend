@@ -8,7 +8,7 @@ let handleClick = e => {
 const Login = () => {
 	return (
 		<div>
-			<Button primary onClick={handleClick} />
+			<Button disabled primary onClick={handleClick} />
 		</div>
 	)
 }
